@@ -2,17 +2,9 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import { button } from "./ui/button";
 import * as stylex from "@stylexjs/stylex";
-
-const styles = stylex.create({
-  base: {
-    fontSize: 26,
-    lineHeight: 1.5,
-  },
-  highlighted: {
-    color: "rebeccapurple",
-  },
-});
+import { h1 } from "./ui/h1";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -27,10 +19,10 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1 {...stylex.props(h1.base)}>Vite + React</h1>
       <div className="card">
         <button
-          {...stylex.props(styles.base)}
+          {...stylex.props(button.base)}
           onClick={() => setCount((count) => count + 1)}
         >
           count is {count}
