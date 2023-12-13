@@ -2,9 +2,9 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { button } from "./ui/button";
+import { button } from "./comps/ui/button";
 import * as stylex from "@stylexjs/stylex";
-import { h1 } from "./ui/h1";
+import { h1 } from "./comps/ui/h1";
 
 function App() {
   const [count, setCount] = useState(0);
