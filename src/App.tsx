@@ -33,8 +33,11 @@ function App() {
       </div>
       <h1 {...stylex.props(h1.base)}>Vite + React</h1>
       <div className="card">
-        <button {...stylex.props(button.base)} onClick={() => open()}>
-          count is 0
+        <button
+          {...stylex.props(button.base, button.boldFont)}
+          onClick={() => open()}
+        >
+          Open Modal
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR

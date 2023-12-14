@@ -20,7 +20,7 @@ export const button = stylex.create({
     cursor: "pointer",
     transition: "border-color 0.25s",
   },
-  highlighted: {
-    color: "rebeccapurple",
+  boldFont: {
+    fontWeight: "bolder",
   },
 });

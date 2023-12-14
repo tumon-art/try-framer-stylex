@@ -32,8 +32,8 @@ const dropIn = {
     },
   },
   exit: {
-    y: "100vh",
-    opacity: 0,
+    x: "100vh",
+    opacity: 1,
   },
 };
 
