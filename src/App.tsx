@@ -1,4 +1,3 @@
-import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -7,22 +6,24 @@ import * as stylex from "@stylexjs/stylex";
 import { h1 } from "./comps/ui/h1";
 import useModal from "./comps/hooks/useModal";
 import Modal from "./comps/Modal";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   const { modalOpen, close, open } = useModal();
-  const [count, setCount] = useState(0);
 
   return (
     <>
       <div>
-        {modalOpen && (
-          <Modal
-            // modalOpen={modalOpen}
-            text={"Modal"}
-            // type={modalType}
-            handleClose={close}
-          />
-        )}
+        <AnimatePresence initial={false} mode="wait">
+          {modalOpen && (
+            <Modal
+              // modalOpen={modalOpen}
+              text={"Modal"}
+              // type={modalType}
+              handleClose={close}
+            />
+          )}
+        </AnimatePresence>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -32,12 +33,8 @@ function App() {
       </div>
       <h1 {...stylex.props(h1.base)}>Vite + React</h1>
       <div className="card">
-        <button
-          {...stylex.props(button.base)}
-          // onClick={() => setCount((count) => count + 1)}
-          onClick={() => open()}
-        >
-          count is {count}
+        <button {...stylex.props(button.base)} onClick={() => open()}>
+          count is 0
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR

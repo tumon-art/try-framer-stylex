@@ -3,7 +3,7 @@ import * as stylex from "@stylexjs/stylex";
 
 const modal = stylex.create({
   base: {
-    width: "clamp(50%, 700px, 90%)",
+    width: "clamp(200px, 40%, 400px)",
     height: "min(50%, 300px)",
     margin: "auto",
     padding: "0 2rem",
@@ -11,8 +11,31 @@ const modal = stylex.create({
     display: "flex",
     flexDirection: "column",
     alignitems: "center",
+    background:
+      "linear-gradient(357deg, rgba(13,54,190,1) 35%, rgba(0,88,255,1) 100%)",
   },
 });
+
+const dropIn = {
+  hidden: {
+    y: "-100vh",
+    opacity: 0,
+  },
+  visible: {
+    y: "0",
+    opacity: 1,
+    transition: {
+      duration: 0.1,
+      type: "spring",
+      damping: 35,
+      stiffness: 400,
+    },
+  },
+  exit: {
+    y: "100vh",
+    opacity: 0,
+  },
+};
 
 export default function Modal({
   handleClose,
@@ -26,6 +49,10 @@ export default function Modal({
       <motion.div
         {...stylex.props(modal.base)}
         onClick={(e) => e.stopPropagation()}
+        variants={dropIn}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
       >
         {text}
       </motion.div>
@@ -43,7 +70,8 @@ const backdrop = stylex.create({
     alignItems: "center",
     height: "100%",
     width: "100%",
-    backgroundColor: "#000000e1",
+    zIndex: "999",
+    backdropFilter: "blur(5px)",
   },
 });
 
