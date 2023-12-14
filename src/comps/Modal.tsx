@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import * as stylex from "@stylexjs/stylex";
 
 const modal = stylex.create({
-  base: {
+  popUp: {
     width: "clamp(200px, 40%, 400px)",
     height: "min(50%, 300px)",
     margin: "auto",
@@ -13,6 +13,18 @@ const modal = stylex.create({
     alignitems: "center",
     background:
       "linear-gradient(357deg, rgba(13,54,190,1) 35%, rgba(0,88,255,1) 100%)",
+  },
+  backDrop: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+    width: "100%",
+    zIndex: "999",
+    backdropFilter: "blur(5px)",
   },
 });
 
@@ -39,58 +51,29 @@ const dropIn = {
 
 export default function Modal({
   handleClose,
-  text,
+  children,
 }: {
   handleClose: () => void;
-  text: string;
+  children: React.ReactNode;
 }) {
   return (
-    <Backdrop onClick={handleClose}>
+    <motion.div
+      {...stylex.props(modal.backDrop)}
+      onClick={handleClose}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <motion.div
-        {...stylex.props(modal.base)}
+        {...stylex.props(modal.popUp)}
         onClick={(e) => e.stopPropagation()}
         variants={dropIn}
         initial="hidden"
         animate="visible"
         exit="exit"
       >
-        {text}
+        {children}
       </motion.div>
-    </Backdrop>
-  );
-}
-
-const backdrop = stylex.create({
-  base: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100%",
-    width: "100%",
-    zIndex: "999",
-    backdropFilter: "blur(5px)",
-  },
-});
-
-const Backdrop = ({
-  children,
-  onClick,
-}: {
-  children: React.ReactNode;
-  onClick: () => void;
-}) => {
-  return (
-    <motion.div
-      {...stylex.props(backdrop.base)}
-      onClick={onClick}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      {children}
     </motion.div>
   );
-};
+}

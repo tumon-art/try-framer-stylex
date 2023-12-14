@@ -18,10 +18,11 @@ function App() {
           {modalOpen && (
             <Modal
               // modalOpen={modalOpen}
-              text={"Modal"}
               // type={modalType}
               handleClose={close}
-            />
+            >
+              Hello Text
+            </Modal>
           )}
         </AnimatePresence>
         <a href="https://vitejs.dev" target="_blank">
