@@ -5,13 +5,24 @@ import "./App.css";
 import { button } from "./comps/ui/button";
 import * as stylex from "@stylexjs/stylex";
 import { h1 } from "./comps/ui/h1";
+import useModal from "./comps/hooks/useModal";
+import Modal from "./comps/Modal";
 
 function App() {
+  const { modalOpen, close, open } = useModal();
   const [count, setCount] = useState(0);
 
   return (
     <>
       <div>
+        {modalOpen && (
+          <Modal
+            // modalOpen={modalOpen}
+            text={"Modal"}
+            // type={modalType}
+            handleClose={close}
+          />
+        )}
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -23,7 +34,8 @@ function App() {
       <div className="card">
         <button
           {...stylex.props(button.base)}
-          onClick={() => setCount((count) => count + 1)}
+          // onClick={() => setCount((count) => count + 1)}
+          onClick={() => open()}
         >
           count is {count}
         </button>
