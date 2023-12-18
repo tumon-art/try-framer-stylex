@@ -11,10 +11,15 @@ const inputPer = stylex.create({
 
 const inputBox = stylex.create({
   base: {
-    width: "15px",
-    height: "30px",
+    width: "20px",
+    height: "35px",
+    textAlign: "center",
     border: "2px solid #00d8ff",
-    borderRadius: "5px",
+    borderRadius: "4px",
+    outline: {
+      default: "none",
+      ":focus": "none"
+    }
   },
 });
 export default function Otp() {
@@ -27,7 +32,7 @@ export default function Otp() {
           <input
             {...stylex.props(inputBox.base)}
             key={i}
-            value={each}
+            // value={each}
             type="text"
           />
         ))}
