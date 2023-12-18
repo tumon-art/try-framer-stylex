@@ -9,6 +9,7 @@ const modal = stylex.create({
     padding: "0 2rem",
     borderRadius: "12px",
     display: "flex",
+    justifyContent: "center",
     flexDirection: "column",
     alignitems: "center",
     background:
@@ -39,7 +40,7 @@ const dropIn = {
     transition: {
       duration: 0.1,
       type: "spring",
-      damping: 35,
+      damping: 25,
       stiffness: 400,
     },
   },

@@ -7,6 +7,7 @@ import { h1 } from "./comps/ui/h1";
 import useModal from "./comps/hooks/useModal";
 import Modal from "./comps/Modal";
 import { AnimatePresence } from "framer-motion";
+import Otp from "./comps/Otp";
 
 function App() {
   const { modalOpen, close, open } = useModal();
@@ -17,11 +18,9 @@ function App() {
         <AnimatePresence initial={false} mode="wait">
           {modalOpen && (
             <Modal
-              // modalOpen={modalOpen}
-              // type={modalType}
               handleClose={close}
             >
-              Hello Text
+              <Otp />
             </Modal>
           )}
         </AnimatePresence>
