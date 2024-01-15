@@ -12,6 +12,7 @@ const modal = stylex.create({
     justifyContent: "center",
     flexDirection: "column",
     alignitems: "center",
+    justifyContent: "center",
     background:
       "linear-gradient(357deg, rgba(13,54,190,1) 35%, rgba(0,88,255,1) 100%)",
   },
