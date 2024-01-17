@@ -24,7 +24,7 @@ function App() {
               // type={modalType}
               handleClose={close}
             >
-              Hello Text
+              <TextArea />
             </Modal>
           )}
         </AnimatePresence>
