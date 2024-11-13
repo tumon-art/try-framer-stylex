@@ -9,6 +9,7 @@ import Modal from "./comps/Modal";
 import { AnimatePresence } from "framer-motion";
 import Otp from "./comps/Otp";
 import { TextArea } from "./comps/TextArea";
+import DatePicker from "./comps/DatePicker";
 
 function App() {
   const { modalOpen, close, open } = useModal();
@@ -17,6 +18,7 @@ function App() {
     <>
       <div>
         <Otp />
+        <DatePicker />
         <AnimatePresence initial={false} mode="wait">
           {modalOpen && (
             <Modal

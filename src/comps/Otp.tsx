@@ -24,39 +24,40 @@ const inputBox = stylex.create({
 });
 export default function Otp() {
   const [otp, setOtp] = useState(["", "", "", ""]);
-	const otpFields = [
-		useRef<HTMLInputElement>(null),
-		useRef<HTMLInputElement>(null),
-		useRef<HTMLInputElement>(null),
-		useRef<HTMLInputElement>(null),
-	];
+  const otpFields = [
+    useRef<HTMLInputElement>(null),
+    useRef<HTMLInputElement>(null),
+    useRef<HTMLInputElement>(null),
+    useRef<HTMLInputElement>(null),
+  ];
 
 
-  const inputChange = (e:ChangeEvent<HTMLInputElement>, index: number) => {
-		const value = e.target.value;
+  const inputChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+    const value = e.target.value;
 
     if (/^\d*$/.test(value) && value.length <= 1) {
       otp[index] = value
       setOtp([...otp])
-      if(value !== "" && index < 3) {
+      if (value !== "" && index < 3) {
         otpFields[index + 1].current?.focus();
       }
     }
 
   }
 
-  function inputBackspaceAndEnter(e:any, index:number) {
+  function inputBackspaceAndEnter(e: any, index: number) {
     const value = e.target.value;
-    if(e.key === "Backspace" && !value && index > 0){
+    if (e.key === "Backspace" && !value && index > 0) {
       otpFields[index - 1].current?.focus();
     }
-    if(e.key === "Enter" && value && index < otp.length-1){
+    if (e.key === "Enter" && value && index < otp.length - 1) {
       otpFields[index + 1].current?.focus();
     }
   }
 
   return (
     <form>
+      <h3> OTP INPUT </h3>
       <section {...stylex.props(inputPer.base)}>
         {otp.map((each, i) => (
           <input
@@ -67,7 +68,7 @@ export default function Otp() {
             value={each}
             type="text"
             onChange={(e) => inputChange(e, i)}
-            onKeyUp={(e)=> inputBackspaceAndEnter(e, i)}
+            onKeyUp={(e) => inputBackspaceAndEnter(e, i)}
             maxLength={1}
             pattern="[0-9]*"
           />
